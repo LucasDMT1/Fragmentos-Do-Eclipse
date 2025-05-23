@@ -1,8 +1,9 @@
-[gd_scene load_steps=26 format=3 uid="uid://ctyqe2bhjsrhb"]
+[gd_scene load_steps=30 format=3 uid="uid://ctyqe2bhjsrhb"]
 
 [ext_resource type="Script" uid="uid://cayhiyv3okyfa" path="res://player/player.gd" id="1_g1dw6"]
 [ext_resource type="Texture2D" uid="uid://gwr32me5ccej" path="res://player/_Idle.png" id="1_oul6g"]
 [ext_resource type="Texture2D" uid="uid://byy62dbhwrhpa" path="res://player/_Run.png" id="2_rkbax"]
+[ext_resource type="Texture2D" uid="uid://184gdi74cs4s" path="res://player/_Jump.png" id="3_yw30f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rkbax"]
 atlas = ExtResource("1_oul6g")
@@ -43,6 +44,18 @@ region = Rect2(960, 0, 120, 80)
 [sub_resource type="AtlasTexture" id="AtlasTexture_2ieo8"]
 atlas = ExtResource("1_oul6g")
 region = Rect2(1080, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjvpn"]
+atlas = ExtResource("3_yw30f")
+region = Rect2(0, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7qer"]
+atlas = ExtResource("3_yw30f")
+region = Rect2(120, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4c7l"]
+atlas = ExtResource("3_yw30f")
+region = Rect2(240, 0, 120, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ebec5"]
 atlas = ExtResource("2_rkbax")
@@ -123,6 +136,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_bjvpn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s7qer")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4c7l")
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ebec5")
 }, {
 "duration": 1.0,
@@ -167,8 +194,9 @@ script = ExtResource("1_g1dw6")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(5, -40)
 sprite_frames = SubResource("SpriteFrames_ebec5")
-animation = &"Idle"
+animation = &"Jump"
 autoplay = "Idle"
+frame_progress = 0.455982
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -19)
