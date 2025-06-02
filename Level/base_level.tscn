@@ -112,7 +112,7 @@ texture = ExtResource("1_o6mkr")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_qmtf6")
 
-[node name="level" type="Node2D"]
+[node name="Base_Level" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_uawph")
