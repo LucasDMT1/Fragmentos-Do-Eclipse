@@ -1,9 +1,26 @@
-[gd_scene load_steps=30 format=3 uid="uid://ctyqe2bhjsrhb"]
+[gd_scene load_steps=35 format=3 uid="uid://ctyqe2bhjsrhb"]
 
 [ext_resource type="Script" uid="uid://cayhiyv3okyfa" path="res://player/player.gd" id="1_g1dw6"]
 [ext_resource type="Texture2D" uid="uid://gwr32me5ccej" path="res://player/_Idle.png" id="1_oul6g"]
+[ext_resource type="Texture2D" uid="uid://dhyhixrut7t6x" path="res://player/_Attack.png" id="2_qjkh3"]
 [ext_resource type="Texture2D" uid="uid://byy62dbhwrhpa" path="res://player/_Run.png" id="2_rkbax"]
 [ext_resource type="Texture2D" uid="uid://184gdi74cs4s" path="res://player/_Jump.png" id="3_yw30f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_knn7v"]
+atlas = ExtResource("2_qjkh3")
+region = Rect2(0, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7pqkx"]
+atlas = ExtResource("2_qjkh3")
+region = Rect2(120, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uw77l"]
+atlas = ExtResource("2_qjkh3")
+region = Rect2(240, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rptt4"]
+atlas = ExtResource("2_qjkh3")
+region = Rect2(360, 0, 120, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rkbax"]
 atlas = ExtResource("1_oul6g")
@@ -101,6 +118,23 @@ region = Rect2(1080, 0, 120, 80)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_knn7v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7pqkx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uw77l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rptt4")
+}],
+"loop": true,
+"name": &"Atack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_rkbax")
 }, {
 "duration": 1.0,
@@ -196,7 +230,7 @@ position = Vector2(5, -40)
 sprite_frames = SubResource("SpriteFrames_ebec5")
 animation = &"Jump"
 autoplay = "Idle"
-frame_progress = 0.455982
+frame_progress = 0.18227
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -19)
