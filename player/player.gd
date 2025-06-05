@@ -2,9 +2,14 @@ extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 const GRAVITY = 1000
-@export var speed : int = 300
-@export var jump : int = -300
-@export var jump_horizontal : int = 100
+@export var speed : int = 1000
+@export var max_horizontal_speed : int = 300
+@export var slow_down_speed : int = 1700
+
+@export var jump : int = -100
+@export var max_jump: int = 300
+@export var jump_horizontal : int = 1000
+@export var max_jump_horizontal_speed =  300
 
 enum State {Idle, Run, Jump}
 
@@ -41,9 +46,10 @@ func player_run(delta : float):
 	var direction = input_movement()
 	
 	if direction:
-		velocity.x = direction * speed
+		velocity.x += direction * speed * delta
+		velocity.x = clamp(velocity.x, -max_horizontal_speed, max_horizontal_speed)
 	else:
-		velocity.x = move_toward(velocity.x , 0 , speed)
+		velocity.x = move_toward(velocity.x , 0 , slow_down_speed * delta)
 		
 	if direction != 0:
 		current_state = State.Run
@@ -53,11 +59,13 @@ func player_run(delta : float):
 func player_jump(delta : float):
 	if is_on_floor():
 		if Input.is_action_just_pressed("jump"):
-				velocity.y = jump
+				velocity.y = jump / delta
+				velocity.y = clamp(velocity.y, -max_jump, max_jump)
 				current_state = State.Jump
 	if !is_on_floor() and current_state == State.Jump:
 		var direction = input_movement()
 		velocity.x += direction * jump_horizontal * delta
+		velocity.x = clamp(velocity.x, -max_jump_horizontal_speed, max_jump_horizontal_speed)
 		
 func player_animations():
 	if current_state == State.Idle:
