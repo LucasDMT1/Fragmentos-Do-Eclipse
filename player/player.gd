@@ -11,7 +11,7 @@ const GRAVITY = 1000
 @export var jump_horizontal : int = 1000
 @export var max_jump_horizontal_speed =  300
 
-enum State {Idle, Run, Jump}
+enum State {Idle, Run, Jump, Atack}
 
 var current_state : State
 
@@ -25,12 +25,17 @@ func _physics_process(delta : float):
 	player_Idle(delta)
 	player_run(delta)
 	player_jump(delta)
+	player_atack(delta)
 	
 	move_and_slide()
 	
 	player_animations()
 	
 	print("State: ", State.keys()[current_state])
+	
+func player_atack(delta):
+	if Input.is_action_just_pressed("atack"):
+		current_state = State.Atack
 	
 func player_falling(delta : float):
 	if !is_on_floor():
@@ -68,12 +73,14 @@ func player_jump(delta : float):
 		velocity.x = clamp(velocity.x, -max_jump_horizontal_speed, max_jump_horizontal_speed)
 		
 func player_animations():
-	if current_state == State.Idle:
+	if current_state == State.Idle and animated_sprite_2d.animation != "Atack":
 		animated_sprite_2d.play("Idle")
 	elif current_state == State.Run:
 		animated_sprite_2d.play("Run")
 	elif current_state == State.Jump:
 		animated_sprite_2d.play("Jump")
+	elif current_state == State.Atack:
+		animated_sprite_2d.play("Atack")
 	
 func input_movement():
 	var direction : int = Input.get_axis("mover_left" , "mover_right")
