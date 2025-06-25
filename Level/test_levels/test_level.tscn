@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://djshoftenp8ij"]
+[gd_scene load_steps=6 format=3 uid="uid://djshoftenp8ij"]
 
 [ext_resource type="PackedScene" uid="uid://br3f8g6t3udkk" path="res://Level/base_level.tscn" id="1_y7k13"]
 [ext_resource type="Texture2D" uid="uid://bstpe82csuh8b" path="res://background/Background.png" id="2_aoess"]
 [ext_resource type="Texture2D" uid="uid://bfplieumo6veb" path="res://background/Mountain.png" id="3_q8b2l"]
 [ext_resource type="PackedScene" uid="uid://q1lnjeu0ku3t" path="res://enemies/bat/enemy_bat.tscn" id="4_q8b2l"]
+[ext_resource type="PackedScene" uid="uid://bng0a3nc36bp3" path="res://ui/game_screen.tscn" id="5_kb72h"]
 
 [node name="Test_Level" instance=ExtResource("1_y7k13")]
 
@@ -37,6 +38,7 @@ texture = ExtResource("3_q8b2l")
 centered = false
 
 [node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2" index="1"]
+position = Vector2(-6, 0)
 texture = ExtResource("3_q8b2l")
 centered = false
 offset = Vector2(320, 0)
@@ -54,3 +56,6 @@ position = Vector2(3, -2)
 
 [node name="EnemyBat" parent="." index="3" instance=ExtResource("4_q8b2l")]
 position = Vector2(186, -21)
+
+[node name="GameScreen" parent="." index="4" instance=ExtResource("5_kb72h")]
+layer = 128

@@ -90,4 +90,5 @@ func input_movement():
 
 func _on_hurt_box_body_entered(body: Node2D):
 	if body.is_in_group("Enemy"):
-		print("Enemy entered")
+		print("Enemy entered ", body.damage_amount)
+		HealthManager.decrease_health(body.damage_amount)

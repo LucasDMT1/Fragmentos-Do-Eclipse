@@ -96,7 +96,7 @@ radius = 5.09902
 [sub_resource type="CircleShape2D" id="CircleShape2D_i4m4x"]
 radius = 33.0151
 
-[node name="EnemyBat" type="CharacterBody2D"]
+[node name="EnemyBat" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 4
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
