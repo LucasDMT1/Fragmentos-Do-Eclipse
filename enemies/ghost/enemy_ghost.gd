@@ -61,3 +61,7 @@ func enemy_walk(delta: float):
 	
 	animated_sprite_2d.flip_h = direction.x < 0
 	
+
+
+func _on_hurtbox_area_entered(area: Area2D):
+	print("Hurtbox area entered")

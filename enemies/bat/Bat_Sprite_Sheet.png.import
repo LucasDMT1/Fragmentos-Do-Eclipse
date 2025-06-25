@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bj8ucl5wgblhg"
-path="res://.godot/imported/Ghost_Idle.png-165d7062f0b78e8d9134afb1161588c4.ctex"
+uid="uid://df3hculq028ja"
+path="res://.godot/imported/Bat_Sprite_Sheet.png-acf2825f8c30de7723fecef69db4dc79.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemies/Ghost_Idle.png"
-dest_files=["res://.godot/imported/Ghost_Idle.png-165d7062f0b78e8d9134afb1161588c4.ctex"]
+source_file="res://enemies/bat/Bat_Sprite_Sheet.png"
+dest_files=["res://.godot/imported/Bat_Sprite_Sheet.png-acf2825f8c30de7723fecef69db4dc79.ctex"]
 
 [params]
 

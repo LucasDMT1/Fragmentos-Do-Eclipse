@@ -86,3 +86,8 @@ func input_movement():
 	var direction : int = Input.get_axis("mover_left" , "mover_right")
 	
 	return direction
+
+
+func _on_hurt_box_body_entered(body: Node2D):
+	if body.is_in_group("Enemy"):
+		print("Enemy entered")

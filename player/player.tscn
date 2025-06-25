@@ -2,24 +2,19 @@
 
 [ext_resource type="Script" uid="uid://cayhiyv3okyfa" path="res://player/player.gd" id="1_g1dw6"]
 [ext_resource type="Texture2D" uid="uid://gwr32me5ccej" path="res://player/_Idle.png" id="1_oul6g"]
-[ext_resource type="Texture2D" uid="uid://dhyhixrut7t6x" path="res://player/_Attack.png" id="2_qjkh3"]
 [ext_resource type="Texture2D" uid="uid://byy62dbhwrhpa" path="res://player/_Run.png" id="2_rkbax"]
 [ext_resource type="Texture2D" uid="uid://184gdi74cs4s" path="res://player/_Jump.png" id="3_yw30f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_knn7v"]
-atlas = ExtResource("2_qjkh3")
 region = Rect2(0, 0, 120, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7pqkx"]
-atlas = ExtResource("2_qjkh3")
 region = Rect2(120, 0, 120, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uw77l"]
-atlas = ExtResource("2_qjkh3")
 region = Rect2(240, 0, 120, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rptt4"]
-atlas = ExtResource("2_qjkh3")
 region = Rect2(360, 0, 120, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rkbax"]
@@ -221,7 +216,11 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rkbax"]
 height = 38.0
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qjkh3"]
+radius = 11.0
+height = 34.0
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 2
 script = ExtResource("1_g1dw6")
 
@@ -235,3 +234,14 @@ frame_progress = 0.937318
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -19)
 shape = SubResource("CapsuleShape2D_rkbax")
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, -19)
+shape = SubResource("CapsuleShape2D_qjkh3")
+debug_color = Color(0.993173, 0, 0.241511, 0.42)
+
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]

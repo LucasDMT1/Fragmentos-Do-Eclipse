@@ -1,8 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://8db2053ho56f"]
+[gd_scene load_steps=19 format=3 uid="uid://8db2053ho56f"]
 
-[ext_resource type="Texture2D" uid="uid://8k6bxlgu7tmr" path="res://enemies/Ghost_Walk.png" id="1_6upxd"]
-[ext_resource type="Texture2D" uid="uid://bj8ucl5wgblhg" path="res://enemies/Ghost_Idle.png" id="1_611hy"]
-[ext_resource type="Script" uid="uid://djtkarhxl2ow4" path="res://enemies/enemy_ghost.gd" id="1_8143l"]
+[ext_resource type="Texture2D" uid="uid://8k6bxlgu7tmr" path="res://enemies/ghost/Ghost_Walk.png" id="1_6upxd"]
+[ext_resource type="Texture2D" uid="uid://bj8ucl5wgblhg" path="res://enemies/ghost/Ghost_Idle.png" id="1_611hy"]
+[ext_resource type="Script" uid="uid://djtkarhxl2ow4" path="res://enemies/ghost/enemy_ghost.gd" id="1_8143l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_th1ht"]
 atlas = ExtResource("1_611hy")
@@ -104,6 +104,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_611hy"]
 radius = 11.0454
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_8143l"]
+radius = 13.0
+
 [node name="EnemyGhost" type="CharacterBody2D"]
 script = ExtResource("1_8143l")
 
@@ -117,4 +120,15 @@ frame_progress = 0.811283
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -10)
 shape = SubResource("CircleShape2D_611hy")
-debug_color = Color(0.984705, 0, 0.340979, 0.42)
+debug_color = Color(3.08037e-06, 0.582503, 0.791094, 0.42)
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(-1, -10)
+shape = SubResource("CircleShape2D_8143l")
+debug_color = Color(0.987288, 0, 0.314638, 0.42)
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

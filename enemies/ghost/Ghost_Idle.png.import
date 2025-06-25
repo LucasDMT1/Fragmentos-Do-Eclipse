@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhyhixrut7t6x"
-path="res://.godot/imported/_Attack.png-a70a8f59821ca8c7457e13748d8e5bb2.ctex"
+uid="uid://bj8ucl5wgblhg"
+path="res://.godot/imported/Ghost_Idle.png-862af9baa706e0d06384e03f2d9f0abe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/_Attack.png"
-dest_files=["res://.godot/imported/_Attack.png-a70a8f59821ca8c7457e13748d8e5bb2.ctex"]
+source_file="res://enemies/ghost/Ghost_Idle.png"
+dest_files=["res://.godot/imported/Ghost_Idle.png-862af9baa706e0d06384e03f2d9f0abe.ctex"]
 
 [params]
 

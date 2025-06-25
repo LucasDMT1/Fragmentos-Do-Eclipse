@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://8k6bxlgu7tmr"
-path="res://.godot/imported/Ghost_Walk.png-3253b5889662d8441de0060da0a6066b.ctex"
+path="res://.godot/imported/Ghost_Walk.png-5b48d5ea6e25a0c0f9585ac154796c89.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemies/Ghost_Walk.png"
-dest_files=["res://.godot/imported/Ghost_Walk.png-3253b5889662d8441de0060da0a6066b.ctex"]
+source_file="res://enemies/ghost/Ghost_Walk.png"
+dest_files=["res://.godot/imported/Ghost_Walk.png-5b48d5ea6e25a0c0f9585ac154796c89.ctex"]
 
 [params]
 
