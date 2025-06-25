@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c75ucokvtct06"]
+[gd_scene load_steps=19 format=3 uid="uid://c75ucokvtct06"]
 
 [ext_resource type="PackedScene" uid="uid://br3f8g6t3udkk" path="res://Level/base_level.tscn" id="1_ue3ff"]
 [ext_resource type="PackedScene" uid="uid://bjey2p6wf70" path="res://background/parallax_background.tscn" id="2_wyyqj"]
@@ -8,7 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://bwfbo0jn62au8" path="res://tileset/Props.png" id="6_8675k"]
 [ext_resource type="Texture2D" uid="uid://cskqensf17k6w" path="res://tileset/Ladder.png" id="7_6lwv1"]
 [ext_resource type="Texture2D" uid="uid://dtsjxx1tpup66" path="res://tileset/Grass.png" id="8_m2sjq"]
+[ext_resource type="Script" uid="uid://cf5td2kjee3ud" path="res://Level/player_camera.gd" id="9_6lwv1"]
 [ext_resource type="PackedScene" uid="uid://8db2053ho56f" path="res://enemies/ghost/enemy_ghost.tscn" id="9_mkoc1"]
+[ext_resource type="PackedScene" uid="uid://bng0a3nc36bp3" path="res://ui/game_screen.tscn" id="10_8675k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ajm2v"]
 texture = ExtResource("3_5ymvu")
@@ -311,12 +313,14 @@ slow_down_speed = 1900
 jump = -200
 max_jump = 350
 
-[node name="Camera2D" parent="Player" index="3"]
+[node name="Camera2D" parent="Player" index="4" node_paths=PackedStringArray("player")]
 limit_left = 0
 limit_top = -270
 limit_right = 1921
 limit_bottom = 0
 editor_draw_limits = true
+script = ExtResource("9_6lwv1")
+player = NodePath("..")
 
 [node name="Enemies" type="Node" parent="." index="3"]
 
@@ -331,3 +335,5 @@ position = Vector2(-61, 25)
 
 [node name="Point2" type="Marker2D" parent="Enemies/EnemyGhost/PatrolPoints" index="1"]
 position = Vector2(89, 25)
+
+[node name="GameScreen" parent="." index="4" instance=ExtResource("10_8675k")]
