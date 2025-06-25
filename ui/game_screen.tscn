@@ -5,4 +5,4 @@
 [node name="GameScreen" type="CanvasLayer"]
 
 [node name="HealthBar" parent="." instance=ExtResource("1_g4tl3")]
-position = Vector2(10, 0)
+position = Vector2(0, 0)
