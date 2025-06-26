@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://df3hculq028ja" path="res://enemies/bat/Bat_Sprite_Sheet.png" id="1_rv3rh"]
 [ext_resource type="Script" uid="uid://blpk26bp7pdl5" path="res://enemies/bat/gravity.gd" id="2_3r1a4"]
-[ext_resource type="Script" uid="uid://dd1krqjvbigm" path="res://scripts/state_machine/node_finite_state_machine.gd" id="3_nvqqb"]
+[ext_resource type="Script" uid="uid://dd1krqjvbigm" path="res://scripts/node_finite_state_machine.gd" id="3_nvqqb"]
 [ext_resource type="Script" uid="uid://dammi8gede0bd" path="res://enemies/bat/state_machine_controller.gd" id="3_w7ys3"]
 [ext_resource type="Script" uid="uid://dx32wjltfvnm3" path="res://enemies/bat/Idle_state.gd" id="4_ofdxu"]
 [ext_resource type="Script" uid="uid://c0hyko3507sih" path="res://enemies/bat/attack_state.gd" id="5_ofdxu"]
