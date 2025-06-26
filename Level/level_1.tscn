@@ -313,7 +313,7 @@ slow_down_speed = 1900
 jump = -200
 max_jump = 350
 
-[node name="Camera2D" parent="Player" index="4" node_paths=PackedStringArray("player")]
+[node name="Camera2D" parent="Player" index="5" node_paths=PackedStringArray("player")]
 limit_left = 0
 limit_top = -270
 limit_right = 1921

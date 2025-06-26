@@ -67,3 +67,6 @@ func enemy_walk(delta: float):
 
 func _on_hurtbox_area_entered(area: Area2D):
 	print("Hurtbox area entered")
+	
+func die():
+	queue_free()

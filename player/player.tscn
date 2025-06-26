@@ -1,9 +1,10 @@
-[gd_scene load_steps=40 format=3 uid="uid://ctyqe2bhjsrhb"]
+[gd_scene load_steps=42 format=3 uid="uid://ctyqe2bhjsrhb"]
 
 [ext_resource type="Script" uid="uid://cayhiyv3okyfa" path="res://player/player.gd" id="1_g1dw6"]
 [ext_resource type="Texture2D" uid="uid://gwr32me5ccej" path="res://player/_Idle.png" id="1_oul6g"]
 [ext_resource type="Shader" uid="uid://drahvos0co7v2" path="res://player/player_hit_flahs_shader.tres" id="2_qjkh3"]
 [ext_resource type="Texture2D" uid="uid://byy62dbhwrhpa" path="res://player/_Run.png" id="2_rkbax"]
+[ext_resource type="Texture2D" uid="uid://cmd11vhb2wb3c" path="res://player/_Attack.png" id="3_g6k8r"]
 [ext_resource type="Texture2D" uid="uid://184gdi74cs4s" path="res://player/_Jump.png" id="3_yw30f"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g6k8r"]
@@ -12,15 +13,19 @@ shader_parameter/enabled = false
 shader_parameter/ColorParameter = Color(0.815082, 0, 0.00755, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_knn7v"]
+atlas = ExtResource("3_g6k8r")
 region = Rect2(0, 0, 120, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7pqkx"]
+atlas = ExtResource("3_g6k8r")
 region = Rect2(120, 0, 120, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uw77l"]
+atlas = ExtResource("3_g6k8r")
 region = Rect2(240, 0, 120, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rptt4"]
+atlas = ExtResource("3_g6k8r")
 region = Rect2(360, 0, 120, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rkbax"]
@@ -118,7 +123,7 @@ region = Rect2(1080, 0, 120, 80)
 [sub_resource type="SpriteFrames" id="SpriteFrames_ebec5"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 0.2,
 "texture": SubResource("AtlasTexture_knn7v")
 }, {
 "duration": 1.0,
@@ -130,7 +135,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_rptt4")
 }],
-"loop": true,
+"loop": false,
 "name": &"Atack",
 "speed": 10.0
 }, {
@@ -226,6 +231,21 @@ height = 38.0
 radius = 11.0
 height = 34.0
 
+[sub_resource type="Animation" id="Animation_g6k8r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_qjkh3"]
 resource_name = "hit"
 length = 0.2
@@ -242,26 +262,14 @@ tracks/0/keys = {
 "values": [false, true]
 }
 
-[sub_resource type="Animation" id="Animation_g6k8r"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/enabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_boad6"]
 _data = {
 &"RESET": SubResource("Animation_g6k8r"),
 &"hit": SubResource("Animation_qjkh3")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g6k8r"]
+size = Vector2(20, 26)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 2
@@ -271,9 +279,10 @@ script = ExtResource("1_g1dw6")
 material = SubResource("ShaderMaterial_g6k8r")
 position = Vector2(5, -40)
 sprite_frames = SubResource("SpriteFrames_ebec5")
-animation = &"Run"
+animation = &"Atack"
 autoplay = "Idle"
-frame_progress = 0.937318
+frame = 3
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -295,4 +304,14 @@ libraries = {
 &"": SubResource("AnimationLibrary_boad6")
 }
 
+[node name="SwordArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SwordArea"]
+position = Vector2(46, -13)
+shape = SubResource("RectangleShape2D_g6k8r")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
+[connection signal="body_entered" from="SwordArea" to="." method="_on_sword_area_body_entered"]
